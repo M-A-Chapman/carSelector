@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p Choose a submodel of car
+  form    
+    select(id='carMake')
+        each make in carMakes
+            option( value="#{make.MakeName}" selected=make.MakeName == chosenMake) #{make.MakeName}
+    select(id='carModel')
+        each model in carModels
+            option( value="#{model.ModelName}" selected=model.ModelName == chosenModel) #{model.ModelName}
+  button(onClick="submit()") Submit
+
+  ul
+    each submodel, index in carSubmodels
+      li= submodel.SubmodelName+index
+      ul
+        each property in submodel 
+          li= property
