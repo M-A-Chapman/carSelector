@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p Choose a make of car
+  form    
+    select(id='carMake')
+        each make in carMakes
+            p #{make}
+            option( value="#{make.MakeName}" selected=make.MakeName == selectedMake) #{make.MakeName}
+  button(onClick="submit()") Submit

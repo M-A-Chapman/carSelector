@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script.
+      const submit = () => {
+      window.location.replace(`localhost:3000`);
+      const carMake = getValueById('carMake');
+      const carModel = getValueById('carModel');
+      switch (window.location.href) { 
+        case 'http://localhost:3000/':
+          window.location.href=`models/?make=${carMake}`;
+          break;
+        case `http://localhost:3000/models/?make=${carMake}`:
+          window.location.href=`/make/?make=${carMake}/submodels/?model=${carModel}`;
+          break;
+        default:
+          window.location.href=`http://localhost:3000/`;
+          break;
+      };
+      };
+    script.
+      const getValueById = (element) => {
+      try {
+          return document.getElementById(element).value || '';
+        } catch (e){}
+      };
+  body
+  
+    block content
